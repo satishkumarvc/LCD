@@ -1,0 +1,49 @@
+#https://docs.arduino.cc/learn/electronics/lcd-displays#set-cursor-example
+// include the library code:
+#include <LiquidCrystal.h>
+
+// initialize the library by associating any needed LCD interface pin
+// with the arduino pin number it is connected to
+
+LiquidCrystal lcd(2,3,4,5,6,7);
+
+const int numRows = 2;
+
+const int numCols = 16;
+void setup() {
+
+  // set up the LCD's number of columns and rows:
+
+  lcd.begin(numCols, numRows);
+}
+
+void loop() {
+
+  // loop from ASCII 'a' to ASCII 'z':
+
+  for (int thisLetter = 'a'; thisLetter <= 'z'; thisLetter++) {
+
+    // loop over the columns:
+
+    for (int  thisRow = 0; thisRow < numRows; thisRow++) {
+
+      // loop over the rows:
+
+      for (int thisCol = 0; thisCol < numCols; thisCol++) {
+
+        // set the cursor position:
+
+        lcd.setCursor(thisCol, thisRow);
+
+        // print the letter:
+
+        lcd.write(thisLetter);
+
+        delay(200);
+
+      }
+
+    }
+
+  }
+}
